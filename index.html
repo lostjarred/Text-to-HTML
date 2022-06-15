@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Text to HTML</title>
+        <script>
+
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <div>
+                <h1>Text to HTML</h1>
+                <hr>
+            </div>
+            
+            <div>
+                <h2>Text Input</h2>
+                <textarea id="textinput" rows="20" cols="200">paste some stuff here</textarea>
+                <hr>
+            </div>
+            
+            <div>
+                <h2>HTML Output</h2>
+                <textarea id="htmloutput" rows="20" cols="200" readonly></textarea>
+            </div>
+        </div>
+    </body>
+    <script>
+        //check the input text area for any changes
+        document.getElementById("textinput").addEventListener("keypress", function(event){converttohtml();})
+
+        //get the textinput element
+        var textinput = document.getElementById("textinput");
+
+        //get html output element
+        var htmloutput = document.getElementById("htmloutput");
+        
+        //change the input to html and update text area
+        function converttohtml(){
+            var input = textinput.value;
+            ////////////////////////////////////////////////////////////////////////////////////////
+            // Helped by https://bobbyhadz.com/blog/javascript-remove-all-line-breaks-from-string //
+            ///////////////////////////////////////////////////////////////////////////////////////
+            var inputremovedlinebreaks = input.replace(/[\r\n]/gm, '<br>');
+            var output = "<p>" + inputremovedlinebreaks + "</p>";
+            htmloutput.value = output;
+        }
+        
+        //run it once just to update things
+        converttohtml();
+    </script>
+</html>
